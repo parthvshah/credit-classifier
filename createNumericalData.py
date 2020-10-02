@@ -1,9 +1,3 @@
-#! /usr/bin/python
-# www.github.com/andpol5/credit-classifier
-#########################################################
-# This script prreprocceses the data from german.data.txt
-# and outputs the result into a new file
-
 # python std
 import csv
 # ML libraries
@@ -25,7 +19,7 @@ def newWidth(column):
 def encodeColumn(oldCol, encoder):
     newCol = []
     for c in oldCol:
-        newCol.append(encoder.transform(c).toarray())
+        newCol.append(encoder.transform(c.reshape(1, -1)).toarray())
     return np.array(newCol)
 
 # Binarize the column with trueVal becoming +1 and everything else -1
